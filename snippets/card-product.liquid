@@ -139,6 +139,14 @@
               >
                 {{- 'products.product.on_sale' | t -}}
               </span>
+            {% else %}
+              {% for tag in card_product.tags %}
+                {% if tag contains '__label' %}
+                  <span class="badge badge--bottom-left color-{{ settings.label_badge_color_scheme }}">
+                    {{ tag | split: ':' | last }}
+                  </span>
+                {% endif %}
+              {% endfor %}
             {%- endif -%}
           </div>
         </div>
